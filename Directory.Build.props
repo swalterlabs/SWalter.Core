@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<Authors>Sebastian Walter</Authors>
-		<Company>evilbaschdi (Sebastian Walter)</Company>
-		<Copyright>Copyright © 2015 - $([System.DateTime]::UtcNow.ToString(yyyy)) evilbaschdi</Copyright>
+		<Company>SWalter Labs</Company>
+		<Copyright>Copyright © 2015 - $([System.DateTime]::UtcNow.ToString(yyyy)) SWalter Labs</Copyright>
 		<DebugSymbols>true</DebugSymbols>
 		<DebugType>full</DebugType>
 		<Description>Core assembly package</Description>
@@ -14,22 +14,35 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
 		<LangVersion>preview</LangVersion>
+		<PackageId>$(MSBuildProjectName)</PackageId>
 		<PackageIcon>icon.png</PackageIcon>
-		<PackageIconUrl><![CDATA[https://avatars1.githubusercontent.com/u/1897807?s=120&v=4]]></PackageIconUrl>
-		<PackageProjectUrl>https://github.com/evilbaschdi/EvilBaschdi.Core</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/swalterlabs/SWalter.Core</PackageProjectUrl>
 		<PackageTags>Core</PackageTags>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<RepositoryUrl>https://github.com/evilbaschdi/EvilBaschdi.Core</RepositoryUrl>
+		<RepositoryUrl>https://github.com/swalterlabs/SWalter.Core</RepositoryUrl>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<TargetFramework>net10.0</TargetFramework>
+		<!--<TargetFramework>net12.0</TargetFramework>-->
+		<TargetFrameworks>net11.0;net10.0</TargetFrameworks>
 		<VersionPrefix>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.H))</VersionPrefix>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Using Include="EvilBaschdi.Core" />
+		<Using Include="SWalter.Core" />
 		<Using Include="JetBrains.Annotations" />
 	</ItemGroup>
+
+	<PropertyGroup Condition="$(MSBuildProjectName.EndsWith('.Tests')) == false">
+		<GenerateSBOM>true</GenerateSBOM>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(GenerateSBOM)' == 'true'">
+		<PackageReference Include="Microsoft.Sbom.Targets">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
 
 	<Choose>
 		<When Condition="$(MSBuildProjectName.EndsWith('.Core'))">
@@ -50,9 +63,9 @@
 			<ItemGroup>
 				<Using Include="AutoFixture.Idioms" />
 				<Using Include="AutoFixture.Xunit3" />
-				<Using Include="EvilBaschdi.Testing" />
-				<Using Include="FluentAssertions" />
-				<Using Include="EvilBaschdi.Testing.FluentAssertions.Microsoft.Extensions.DependencyInjection" />
+				<Using Include="SWalter.Testing" />
+				<Using Include="AwesomeAssertions" />
+				<Using Include="SWalter.Testing.Assertions.Microsoft.Extensions.DependencyInjection" />
 				<Using Include="NSubstitute" />
 				<Using Include="NSubstitute.ReturnsExtensions" />
 				<Using Include="Xunit" />
@@ -63,18 +76,14 @@
 			</ItemGroup>
 
 			<ItemGroup>
-				<PackageReference Include="EvilBaschdi.Testing" />
+				<PackageReference Include="SWalter.Testing" />
 				<PackageReference Include="xunit.v3" />
 				<PackageReference Include="Microsoft.NET.Test.Sdk" />
 				<PackageReference Include="coverlet.collector">
 					<PrivateAssets>all</PrivateAssets>
 					<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 				</PackageReference>
-				<PackageReference Include="FluentAssertions.Analyzers">
-					<PrivateAssets>all</PrivateAssets>
-					<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-				</PackageReference>
-				<PackageReference Include="Meziantou.FluentAssertionsAnalyzers">
+				<PackageReference Include="AwesomeAssertions.Analyzers">
 					<PrivateAssets>all</PrivateAssets>
 					<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 				</PackageReference>

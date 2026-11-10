@@ -1,0 +1,65 @@
+namespace SWalter.Core.Extensions;
+
+/// <summary>
+/// </summary>
+// ReSharper disable once UnusedType.Global
+public static class FileInfoExtensions
+{
+    /// <summary>
+    /// </summary>
+    /// <param name="fileInfo"></param>
+    /// <returns></returns>
+    [CanBeNull]
+    // ReSharper disable once UnusedMember.Global
+    public static string GetProperFilePathCapitalization([NotNull] this FileInfo fileInfo)
+    {
+        ArgumentNullException.ThrowIfNull(fileInfo);
+
+        var dirInfo = fileInfo.Directory;
+        if (dirInfo is null)
+        {
+            return null;
+        }
+
+        var matchingFile = dirInfo
+            .EnumerateFiles()
+            .FirstOrDefault(file => string.Equals(file.Name, fileInfo.Name, StringComparison.OrdinalIgnoreCase));
+
+        var fileName = matchingFile?.Name ?? fileInfo.Name;
+        return Path.Combine(dirInfo.GetProperDirectoryCapitalization(), fileName).Trim();
+    }
+
+    /// <summary>
+    ///     Returns true, if a file is locked.
+    /// </summary>
+    /// <param name="file">FileInfo of tile to check.</param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException"><paramref name="file" /> is <see langword="null" />.</exception>
+    // ReSharper disable once UnusedMember.Global
+    public static bool IsFileLocked(this FileInfo file)
+    {
+        ArgumentNullException.ThrowIfNull(file);
+
+        FileStream stream = null;
+
+        try
+        {
+            stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+        }
+        catch (IOException)
+        {
+            //the file is unavailable because it is:
+            //still being written to
+            //or being processed by another thread
+            //or does not exist (has already been processed)
+            return true;
+        }
+        finally
+        {
+            stream?.Close();
+        }
+
+        //file is not locked
+        return false;
+    }
+}

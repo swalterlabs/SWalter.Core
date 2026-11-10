@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/EvilBaschdi.Core/EvilBaschdi.Core.csproj"
+                "${workspaceFolder}/src/SWalter.Core/SWalter.Core.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/EvilBaschdi.Core/EvilBaschdi.Core.csproj"
+                "${workspaceFolder}/src/SWalter.Core/SWalter.Core.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/src/EvilBaschdi.Core/EvilBaschdi.Core.csproj"
+                "${workspaceFolder}/src/SWalter.Core/SWalter.Core.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -38,7 +38,7 @@
             "type": "process",
             "args": [
                 "test",
-                "${workspaceFolder}/tests/EvilBaschdi.Core.Tests/EvilBaschdi.Core.Tests.csproj"
+                "${workspaceFolder}/tests/SWalter.Core.Tests/SWalter.Core.Tests.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

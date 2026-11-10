@@ -1,52 +1,95 @@
-# EvilBaschdi.Core
+<!-- markdownlint-disable MD033 -->
+# SWalter.Core
 
-## Source Code of EvilBaschdi.Core
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+[![Target: .NET 10.0](https://img.shields.io/badge/.NET-10.0-512bd4.svg?style=for-the-badge&logo=dotnet)](Directory.Build.props)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge&)](LICENSE)
+Core assembly and base utilities for .NET applications.
 
-### Package Feeds
+---
 
-Default by `NuGet.config` is myget.org
+## 📈 Quality & Activity
 
-| Feed                           | Feed Url                                                         |
-| :----------------------------- | :--------------------------------------------------------------- |
-| ![myget.org][myGetBadge]       | <https://www.myget.org/F/evilbaschdi/api/v3/index.json>          |
-| ![codeberg.org][codebergBadge] | <https://codeberg.org/api/packages/evilbaschdi/nuget/index.json> |
+| Branch | Status & Activity |
+| :--- | :--- |
+| ![Main](https://img.shields.io/badge/branch-main-brightgreen?style=flat-square&logo=git&logoColor=white&color=c9ff00) | [![CodeFactor](https://www.codefactor.io/repository/github/swalterlabs/SWalter.Core/badge/main?style=flat-square)](https://www.codefactor.io/repository/github/swalterlabs/SWalter.Core/overview/main) ![Commit Activity Main](https://img.shields.io/github/commit-activity/m/evilbaschdi/SWalter.Core/main?style=flat-square) ![Last Commit Main](https://img.shields.io/github/last-commit/evilbaschdi/SWalter.Core/main?style=flat-square) |
+| ![Develop](https://img.shields.io/badge/branch-develop-blue?style=flat-square&logo=git&logoColor=white&color=0080ff) | [![CodeFactor](https://www.codefactor.io/repository/github/swalterlabs/SWalter.Core/badge/develop?style=flat-square)](https://www.codefactor.io/repository/github/swalterlabs/SWalter.Core/overview/develop) ![Commit Activity Develop](https://img.shields.io/github/commit-activity/m/evilbaschdi/SWalter.Core/develop?style=flat-square) ![Last Commit Develop](https://img.shields.io/github/last-commit/evilbaschdi/SWalter.Core/develop?style=flat-square) |
 
-### Quality & Activity
+---
 
-| Branch                                | Status & Activity                                                                                                                                                        |
-| :------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Main Branch][mainBranchBadge]       | [![CodeFactor][codeFactorMainBadge]][codeFactorMainOverview] ![Commit Activity Main][commitActivityMainBadge] ![Last Commit Main][lastCommitMainBadge]                   |
-| ![Develop Branch][developBranchBadge] | [![CodeFactor][codeFactorDevelopBadge]][codeFactorDevelopOverview] ![Commit Activity Develop][commitActivityDevelopBadge] ![Last Commit Develop][lastCommitDevelopBadge] |
+## 📦 Packages in this Repository
 
-### Packages
+| Package | Description | Sources |
+| :--- | :--- | :--- |
+| [`SWalter.Core`](src/SWalter.Core) | Foundational abstractions, utility classes, and common helper types. | [![MyGet](https://img.shields.io/badge/MyGet-gray?style=flat-square&logo=myget)](https://myget.org/feed/swalterlabs/package/nuget/SWalter.Core) [![Codeberg](https://img.shields.io/badge/Codeberg-gray?style=flat-square&logo=codeberg)](https://codeberg.org/evilbaschdi/-/packages/nuget/SWalter.Core) |
 
-| Branch                                | Version                               |
-| :------------------------------------ | :------------------------------------ |
-| ![Main Branch][mainBranchBadge]       | ![MyGet Version][myGetVersionMain]    |
-| ![Develop Branch][developBranchBadge] | ![MyGet Version][myGetVersionDevelop] |
+---
 
-| Feed                           | Package Url                                                          |
-| :----------------------------- | :------------------------------------------------------------------- |
-| ![myget.org][myGetBadge]       | <https://myget.org/feed/evilbaschdi/package/nuget/EvilBaschdi.Core>  |
-| ![codeberg.org][codebergBadge] | <https://codeberg.org/evilbaschdi/-/packages/nuget/EvilBaschdi.Core> |
+## 🚀 Package Feeds
 
+All packages (Release and Preview builds) are published to **MyGet** and **Codeberg**. You only need to configure **one** of these feeds.
 
-[myGetBadge]: https://img.shields.io/badge/MyGet.org-gray?style=for-the-badge&logo=myget
-[codebergBadge]: https://img.shields.io/badge/Codeberg-gray?style=for-the-badge&logo=codeberg
+| Registry | Feed URL |
+| :--- | :--- |
+| **MyGet** | `https://www.myget.org/F/swalterlabs/api/v3/index.json` |
+| **Codeberg** | `https://codeberg.org/api/packages/evilbaschdi/nuget/index.json` |
 
-[mainBranchBadge]: https://img.shields.io/badge/branch-main-brightgreen?style=for-the-badge&logo=git&logoColor=white&color=c9ff00
-[developBranchBadge]: https://img.shields.io/badge/branch-develop-blue?style=for-the-badge&logo=git&logoColor=white&color=0080ff
+### Add Feed via .NET CLI
 
-[codeFactorMainBadge]: https://www.codefactor.io/repository/github/evilbaschdi/EvilBaschdi.Core/badge/main?style=for-the-badge
-[codeFactorMainOverview]: https://www.codefactor.io/repository/github/evilbaschdi/EvilBaschdi.Core/overview/main
-[commitActivityMainBadge]: https://img.shields.io/github/commit-activity/m/evilbaschdi/EvilBaschdi.Core/main?style=for-the-badge
-[lastCommitMainBadge]: https://img.shields.io/github/last-commit/evilbaschdi/EvilBaschdi.Core/main?style=for-the-badge
-[myGetVersionMain]: https://img.shields.io/myget/evilbaschdi/v/EvilBaschdi.Core?style=for-the-badge&label=EvilBaschdi.Core
+Choose either MyGet or Codeberg:
 
-[codeFactorDevelopBadge]: https://www.codefactor.io/repository/github/evilbaschdi/EvilBaschdi.Core/badge/develop?style=for-the-badge
-[codeFactorDevelopOverview]: https://www.codefactor.io/repository/github/evilbaschdi/EvilBaschdi.Core/overview/develop
-[commitActivityDevelopBadge]: https://img.shields.io/github/commit-activity/m/evilbaschdi/EvilBaschdi.Core/develop?style=for-the-badge
-[lastCommitDevelopBadge]: https://img.shields.io/github/last-commit/evilbaschdi/EvilBaschdi.Core/develop?style=for-the-badge
-[myGetVersionDevelop]: https://img.shields.io/myget/evilbaschdi/vpre/EvilBaschdi.Core?style=for-the-badge&label=EvilBaschdi.Core
+```bash
+# Option A: MyGet (recommended)
+dotnet nuget add source https://www.myget.org/F/swalterlabs/api/v3/index.json -n "SWalter Labs"
+
+# Option B: Codeberg
+dotnet nuget add source https://codeberg.org/api/packages/evilbaschdi/nuget/index.json -n "EvilBaschdi Codeberg"
+```
+
+<details>
+<summary><b>Sample <code>NuGet.Config</code> with Package Source Mapping</b></summary>
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+    <!-- Choose one of the following feeds: -->
+    <add key="SWalter Labs" value="https://www.myget.org/F/swalterlabs/api/v3/index.json" />
+    <!-- <add key="EvilBaschdi Codeberg" value="https://codeberg.org/api/packages/evilbaschdi/nuget/index.json" /> -->
+  </packageSources>
+
+  <packageSourceMapping>
+    <packageSource key="nuget.org">
+      <package pattern="*" />
+    </packageSource>
+    <packageSource key="SWalter Labs">
+      <package pattern="SWalter.*" />
+    </packageSource>
+    <!-- <packageSource key="EvilBaschdi Codeberg">
+      <package pattern="SWalter.*" />
+    </packageSource> -->
+  </packageSourceMapping>
+</configuration>
+```
+
+</details>
+
+---
+
+## 📥 Installation
+
+Install any package via `dotnet add package`:
+
+### Standard Release
+
+```bash
+dotnet add package SWalter.Core
+```
+
+### Preview Builds
+
+```bash
+dotnet add package SWalter.Core --prerelease
+```

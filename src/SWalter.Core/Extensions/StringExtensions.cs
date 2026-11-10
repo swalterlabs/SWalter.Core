@@ -1,0 +1,95 @@
+using System.Text;
+
+namespace SWalter.Core.Extensions;
+
+/// <summary>
+///     Class to extend the functionality of type <see cref="string" />
+/// </summary>
+// ReSharper disable once UnusedType.Global
+public static class StringExtensions
+{
+    /// <summary>
+    ///     Replace with <see cref="StringComparison" />
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="oldValue"></param>
+    /// <param name="newValue"></param>
+    /// <param name="comparisonType"></param>
+    /// <returns></returns>
+    // ReSharper disable once UnusedMember.Global
+    public static string Replace([NotNull] this string source, [NotNull] string oldValue, string newValue, StringComparison comparisonType)
+    {
+        ArgumentNullException.ThrowIfNull(source);
+
+        ArgumentNullException.ThrowIfNull(oldValue);
+
+        var index = source.IndexOf(oldValue, comparisonType);
+
+        // Determine if we found a match
+        var matchFound = index >= 0;
+
+        if (!matchFound)
+        {
+            return source;
+        }
+
+        // Remove the old text
+        source = source.Remove(index, oldValue.Length);
+
+        // Add the replacement text
+        source = source.Insert(index, newValue);
+
+        return source;
+    }
+
+    /// <param name="value">The string to modify to this instance. </param>
+    extension(string value)
+    {
+        /// <summary>
+        ///     Returns a new string in which a specified number of characters in the current instance beginning at from right have
+        ///     been deleted.
+        /// </summary>
+        /// <param name="count">The number of characters to delete. </param>
+        /// <returns></returns>
+        // ReSharper disable once UnusedMember.Global
+        public string RemoveRight(int count)
+        {
+            ArgumentNullException.ThrowIfNull(value);
+
+            return count <= 0
+                ? throw new ArgumentOutOfRangeException(nameof(count))
+                : value.Length > count
+                    ? value.Remove(value.Length - count, count)
+                    : value;
+        }
+
+        /// <summary>
+        ///     Returns a new string in which a specified number of characters in the current instance beginning at from left have
+        ///     been deleted.
+        /// </summary>
+        /// <param name="count">The number of characters to delete. </param>
+        /// <returns></returns>
+        // ReSharper disable once UnusedMember.Global
+        public string RemoveLeft(int count)
+        {
+            ArgumentNullException.ThrowIfNull(value);
+
+            return count <= 0
+                ? throw new ArgumentOutOfRangeException(nameof(count))
+                : value.Length > count
+                    ? value.Remove(0, count)
+                    : value;
+        }
+
+        /// <summary>
+        ///     Decodes a given string to UTF8
+        /// </summary>
+        /// <returns></returns>
+        // ReSharper disable once UnusedMember.Global
+        public string DecodeString()
+        {
+            var bytes = Encoding.Default.GetBytes(value);
+            return Encoding.UTF8.GetString(bytes);
+        }
+    }
+}
